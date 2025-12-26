@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 225 25% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 225 25% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 225 25% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 168 84% 50%;
+    --primary-foreground: 225 25% 5%;
+
+    --secondary: 225 20% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 225 15% 16%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 168 84% 50%;
+    --accent-foreground: 225 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 225 15% 15%;
+    --input: 225 15% 15%;
+    --ring: 168 84% 50%;
+
+    --radius: 0.625rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(168 84% 50%), hsl(190 90% 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(225 25% 6%) 0%, hsl(225 25% 3%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(225 20% 10%), hsl(225 20% 7%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(168 84% 50% / 0.12), transparent 70%);
+    
+    --shadow-glow: 0 0 80px -20px hsl(168 84% 50% / 0.35);
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
+    --shadow-elevated: 0 24px 48px -12px hsl(0 0% 0% / 0.5);
+
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 225 25% 7%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 168 84% 50%;
+    --sidebar-primary-foreground: 225 25% 5%;
+    --sidebar-accent: 225 20% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 225 15% 15%;
+    --sidebar-ring: 168 84% 50%;
+  }
+
+  .dark {
+    --background: 225 25% 5%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-card {
+    background-image: var(--gradient-card);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass {
+    @apply backdrop-blur-2xl;
+    background: hsl(225 20% 10% / 0.7);
+    border: 1px solid hsl(225 20% 18% / 0.5);
+  }
+
+  .section-padding {
+    @apply py-24 md:py-36 px-6 md:px-12;
+  }
+
+  .container-custom {
+    @apply max-w-5xl mx-auto;
+  }
+
+  .section-title {
+    @apply text-primary font-medium text-xs uppercase tracking-[0.2em] mb-5 block;
+  }
+
+  .heading-lg {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight;
+  }
+
+  .heading-md {
+    @apply font-display text-3xl md:text-4xl font-semibold tracking-tight;
+  }
+
+  .body-lg {
+    @apply text-muted-foreground text-lg md:text-xl leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 40px -15px hsl(187 92% 55% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 60px -10px hsl(187 92% 55% / 0.5);
+  }
+}
